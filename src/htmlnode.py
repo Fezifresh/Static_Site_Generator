@@ -1,3 +1,5 @@
+from operator import methodcaller
+
 class HTMLNode:
     def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
@@ -30,10 +32,26 @@ class LeafNode(HTMLNode):
             raise ValueError("All leaf nodes must have a value")
         if self.tag == None:
             return self.value
-        front_tag = "<" + self.tag + self.props_to_html() + ">"
-        end_tag = "</" + self.tag + ">"
-        return front_tag + self.value + end_tag
+        return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
 
     def __repr__(self):
         print (f"LEAFNODE(tag = {self.tag}, value = {self.value}, props = {self.props}")
+        return
+    
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag, None, children, props)
+
+    def to_html(self):
+        if self.tag == None:
+            raise ValueError("All parent nodes must have a tag")
+        if self.children == None:
+            raise ValueError("All parent nodes must have children")
+        if isinstance(self, LeafNode):
+            print("I am a leaf")
+            return self.to_html()
+        return f"<{self.tag}{self.props_to_html()}>{''.join(list(map(methodcaller('to_html'), self.children)))}</{self.tag}>"
+    
+    def __repr__(self):
+        print (f"PARENTNODE(tag = {self.tag}, children = {self.children}, props = {self.props}")
         return
