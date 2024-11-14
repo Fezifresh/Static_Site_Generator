@@ -29,7 +29,7 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("I am a test file", TextType.TEXT, "www.google.com")
         self.assertNotEqual(node, node2)
 
-    def test_not_eq(self):
+    def test_not_eq_3(self):
         node = TextNode("I am a test file", TextType.CODE, "None")
         node2 = TextNode("I am a test file", TextType.CODE,)
         self.assertNotEqual(node, node2)

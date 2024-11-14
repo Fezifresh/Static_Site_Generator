@@ -33,7 +33,7 @@ class TestLeafNode(unittest.TestCase):
         test_node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
         self.assertEqual(test_node.to_html(), '<a href="https://www.google.com">Click me!</a>')
 
-    def test_to_html_2(self):
+    def test_to_html_3(self):
         test_node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
         self.assertEqual(test_node.to_html(), '<a href="https://www.google.com">Click me!</a>')
 
