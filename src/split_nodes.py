@@ -32,8 +32,6 @@ def split_nodes_delimeter(old_nodes, delimeter, text_type):
 
     return new_nodes
 
-#TextNode(obi wan image, image text, https://i.imgur.com/fJRm4Vk.jpeg)
-
 def split_nodes_links(old_nodes):
     new_nodes = []
     for node in old_nodes:
