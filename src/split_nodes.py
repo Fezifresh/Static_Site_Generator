@@ -1,5 +1,5 @@
 from textnode import TextNode, TextType
-from extract_links import extract_markdown_images, extract_markdown_links
+from extract_from_text import extract_markdown_images, extract_markdown_links
 
 def split_nodes_delimeter(old_nodes, delimeter, text_type):
     new_nodes = []

@@ -1,6 +1,6 @@
 import unittest
 
-from extract_links import extract_markdown_images, extract_markdown_links
+from extract_from_text import extract_markdown_images, extract_markdown_links
 
 class TestExtractLinks(unittest.TestCase):
     def test_eq(self):
