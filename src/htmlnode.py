@@ -20,8 +20,11 @@ class HTMLNode:
         return props_string[0:-1]
     
     def __repr__(self):
-        print (f"HTMLNODE(tag = {self.tag}, value = {self.value}, children = {self.children}, props = {self.props}")
-        return
+        return (f"HTMLNODE(tag = {self.tag}, value = {self.value}, children = {self.children}, props = {self.props})")
+    
+    def __eq__(self, other_html_node):
+        if self.tag == other_html_node.tag and self.value == other_html_node.value and self.children == other_html_node.children and self.props == other_html_node.props:
+            return True
     
 class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
@@ -35,8 +38,8 @@ class LeafNode(HTMLNode):
         return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
 
     def __repr__(self):
-        print (f"LEAFNODE(tag = {self.tag}, value = {self.value}, props = {self.props}")
-        return
+        return (f"LEAFNODE(tag = {self.tag}, value = {self.value}, props = {self.props})")
+        
     
 class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
@@ -53,5 +56,4 @@ class ParentNode(HTMLNode):
         return f"<{self.tag}{self.props_to_html()}>{''.join(list(map(methodcaller('to_html'), self.children)))}</{self.tag}>"
     
     def __repr__(self):
-        print (f"PARENTNODE(tag = {self.tag}, children = {self.children}, props = {self.props}")
-        return
+        return (f"PARENTNODE(tag = {self.tag}, children = {self.children}, props = {self.props})")
