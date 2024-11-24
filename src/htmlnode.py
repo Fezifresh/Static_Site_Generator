@@ -51,7 +51,6 @@ class ParentNode(HTMLNode):
         if self.children == None:
             raise ValueError("All parent nodes must have children")
         if isinstance(self, LeafNode):
-            print("I am a leaf")
             return self.to_html()
         return f"<{self.tag}{self.props_to_html()}>{''.join(list(map(methodcaller('to_html'), self.children)))}</{self.tag}>"
     
